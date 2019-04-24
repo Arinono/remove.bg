@@ -1,28 +1,28 @@
 omg: 1
 info:
   version: 1.0.0
-  title: Your microservice
-  description: Describe your microservice
+  title: Remove Background
+  description: Removes backgrounds from images
   license:
     name: Apache 2.0
     url: https://opensource.org/licenses/Apache-2.0
 lifecycle:
   startup:
-    command: ["node", "/app/src/index.js"]
+    command: ['node', '/app/src/index.js']
 actions:
-  message:
+  file:
+    help: Removes the background of the provided image (via URL)
     http:
-      path: /message
+      path: /remove
       method: post
-      port: 8080
+      port: 5000
     arguments:
-      name:
+      url:
         type: string
         required: true
-        in: requestBody
-    output:
-      contentType: application/json
-      type: object
-      properties:
-        message:
-          type: string
+        in: query
+
+environment:
+  REMOVE_BG_API_KEY:
+    required: true
+    type: string
