@@ -10,7 +10,7 @@ lifecycle:
   startup:
     command: ['node', '/app/src/index.js']
 actions:
-  file:
+  remove:
     help: Removes the background of the provided image (via URL)
     http:
       path: /remove
@@ -21,6 +21,10 @@ actions:
         type: string
         required: true
         in: query
+    output:
+      type: string
+      # type: object
+      # contentType: image/png
 
 environment:
   REMOVE_BG_API_KEY:
