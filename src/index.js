@@ -55,6 +55,10 @@ router.post('/remove', (req, res) => {
   )
 })
 
+router.get('/health', (req, res) => {
+  res.statusCode(200).send(`I'm healthy!`)
+})
+
 app.use(router)
 
 console.log(`App listening on port ${port}`)

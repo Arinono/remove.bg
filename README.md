@@ -10,20 +10,20 @@ Usage
 
 ```coffee
 # Storyscript
-your_service message name: 'Peter'
-# {"message": "Hello Peter"}
+your_service remove url: 'url-image.png'
+# Returns the image without its background
 ```
 
 Test
 ----
 
 ```sh
-> omg run message -a name=Service
+> omg run remove -a url="image-url.png"
 ℹ Building Docker image
 …
 ✔ Built Docker image with name: omg/l2hvbwuvc2vil2fzew5jes9ydwj5
 ✔ Started Docker container: 1c8a91688261
 ✔ Health check passed
-✔ Ran action: `message` with output: {"message":"Hello Service"}
+✔ Ran action: `remove` with output: ...
 ✔ Stopped Docker container: 1c8a91688261
 ```

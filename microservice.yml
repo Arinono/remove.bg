@@ -9,6 +9,10 @@ info:
 lifecycle:
   startup:
     command: ['node', '/app/src/index.js']
+health:
+  http:
+    path: /health
+    port: 5000
 actions:
   remove:
     help: Removes the background of the provided image (via URL)
