@@ -26,9 +26,7 @@ actions:
         required: true
         in: requestBody
     output:
-      type: string
-      # type: object
-      # contentType: image/png
+      type: any
 
 environment:
   REMOVE_BG_API_KEY:
