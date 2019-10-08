@@ -24,7 +24,7 @@ actions:
       url:
         type: string
         required: true
-        in: query
+        in: requestBody
     output:
       type: string
       # type: object

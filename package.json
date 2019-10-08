@@ -21,6 +21,7 @@
     "omg"
   ],
   "dependencies": {
+    "body-parser": "^1.19.0",
     "koa": "^2.7.0",
     "koa-json-body": "^5.3.0",
     "koa-router": "^7.4.0"

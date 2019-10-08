@@ -1,9 +1,9 @@
 const express = require('express')
 const request = require('request')
-const fs = require('fs')
+const bodyParser = require('body-parser')
 const app = express()
 const router = express.Router()
-const port = process.env.PUBSUB_PORT || 5000
+const port = 5000
 
 const API_KEY = process.env.REMOVE_BG_API_KEY
 
@@ -15,17 +15,18 @@ app.use((req, res, next) => {
   )
   next()
 })
+app.use(bodyParser())
 
 router.post('/remove', (req, res) => {
-  if (!req.query.url) {
+  if (!req.body.url) {
     return console.error('url not provided')
   }
-  console.log(`url file received: ${req.query.url}`)
+  console.log(`url file received: ${req.body.url}`)
   request.post(
     {
       url: 'https://api.remove.bg/v1.0/removebg',
       formData: {
-        image_url: req.query.url,
+        image_url: req.body.url,
         size: 'auto'
       },
       headers: {
@@ -36,11 +37,11 @@ router.post('/remove', (req, res) => {
     (error, response, body) => {
       if (error) {
         console.error(`Request failed: ${error}`)
-        res.statusCode(500).send(error)
+        res.status(500).send(error)
       }
       if (response.statusCode != 200) {
         console.error(`Error: ${response.statusCode}`, body.toString('utf8'))
-        res.statusCode(response.statusCode).send({
+        res.status(response.statusCode).send({
           statusCode: response.statusCode,
           body: body.toString('utf8')
         })
@@ -56,7 +57,7 @@ router.post('/remove', (req, res) => {
 })
 
 router.get('/health', (req, res) => {
-  res.statusCode(200).send(`I'm healthy!`)
+  res.status(200).send(`I'm healthy!`)
 })
 
 app.use(router)
