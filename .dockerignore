@@ -1,5 +1,6 @@
-tests
-asyncy.yml
 LICENSE
 README.md
-no-bg.png
+microservice.yml
+node_modules
+.github
+.gitignore

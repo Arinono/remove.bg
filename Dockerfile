@@ -1,8 +1,9 @@
-FROM        node:latest
+FROM node:latest
 
-RUN         mkdir /app
-ADD         package.json package-lock.json /app/
-RUN         npm install --prefix /app
-COPY        src /app/src
+WORKDIR /app
+COPY package.json .
+COPY yarn.lock .
+RUN yarn
+COPY . .
 
 ENTRYPOINT  ["node", "/app/src/index.js"]

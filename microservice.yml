@@ -32,3 +32,13 @@ environment:
   REMOVE_BG_API_KEY:
     required: true
     type: string
+  S3_BUCKET:
+    type: string
+  S3_DIRECTORY:
+    type: string
+  AWS_ACCESS_KEY_ID:
+    type: string
+  AWS_SECRET_ACCESS_KEY:
+    type: string
+  AWS_REGION:
+    type: string
